@@ -6,7 +6,7 @@ Pour faire fonctionner ce projet, il faut lire le compte rendu et suivre les ét
 
 Il y aura des informations à réadapter selon votre configuration, qui sont aussi detaillé dans le compte rendu.
 
-Dans le repertoire arduino, on va y retrouver le code pour l'ESP32.
+Dans le repertoire arduino, on va y retrouver le code pour l'ESP32 ainsi que les bibliotèques utilisé.
 
 Dans le repertoire Rapsberry, on y retrouvera le code du site web, le serveur d'ecoute MQTT, ainsi que les scripts pour convertir des musiques .midi en note de musique.
 
