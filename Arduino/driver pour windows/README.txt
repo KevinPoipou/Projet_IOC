@@ -1,0 +1,2 @@
+A installer si windows n'arrive pas a detecter votre ESP32 lorsque vous le connecter a un port USB.
+Il s'agit d'un executable à lancer sous windows. Il ne s'agit pas d'une bibliotèque a installer pour ArduinoIDE

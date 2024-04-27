@@ -7,7 +7,7 @@ canal = "Pi"
 
 db_config = {
     'user' : 'root',
-    'password' : 'Aze123Eza*',
+    'password' : 'Trou2balle',
     'host' : 'localhost',
     'database' : 'DB_ESP32'
 }
