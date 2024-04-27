@@ -17,3 +17,6 @@ Puis il faudra lancer le serveur d'ecoute en tapant : python start_subscriber.py
 Une fois le serveur d'écoute lancer, il faudra y récupéré l'adresse ip afficher, changer dans le repertoire www le fichier mqtt.js en mettant l'adresse ip obtenu.
 
 Ensuite il suffira d'ouvrir le logiciel Arduino IDE, d'y ouvrir le projet qui est situé dans le repertoire "Arduino", changez les informations comme décrit dans l'entete et téléversé le code sur l'ESP32.
+
+
+![plot](./images/site_web.pnj?raw=true "site_web")
