@@ -1,0 +1,285 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Peri Web Server</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mqtt/4.2.7/mqtt.min.js"></script> <!--script pour envoyer du mqtt-->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="header-left">
+        <img src="./img/peri.png" alt="Image peri ioc" style="width: 90%; height: 90%; margin-left: 0%;">
+      </div>
+      <div class="header-right">
+        <p>ESP32 selectionné : </p>
+        <p id="selectedMac"></p>
+      </div>
+    </header>
+    <nav>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="nameList">
+        </tbody>
+      </table>
+    </nav>
+    <main>
+      <section class="top-container">
+        
+        <section class="left-rectangle">
+          <!-- Rectangle de gauche (les info)-->
+          <table>
+            <tr>
+              <th colspan="2">Informations sur l'ESP32</th>
+            </tr>
+            <tr>
+              <td colspan="1">Nom</td>
+              <td colspan="1"><p id="selectedName"></p></td>
+            </tr>
+            <tr>
+              <td colspan="1">Adresse MAC</td>
+              <td colspan="1"><p id="secondLocation"></p></td>
+            </tr>
+            <tr>
+              <td colspan="1">Last seen</td>
+              <td colspan="1"><p id="selectedLastSeen"></p></td>
+            </tr>
+            <tr>
+              <td colspan="1">Luminosité</td>
+              <td colspan="1"><p id="selectedLuminosity"></p></td>
+            </tr>
+            <tr>
+              <td colspan="1">Bouton</td>
+              <td colspan="1"><p id="selectedButton"></p></td>
+            </tr>
+            <tr>
+              <td colspan="1">Detecteur de mouvement</td>
+              <td colspan="1"><p id="selectedMotion"></p></td>
+            </tr>
+            <tr>
+              <td colspan="1">Haut-parleur</td>
+              <td colspan="1">
+                <select id="dropdown_music_list">
+                  <option value="dropdown_music_list_default">Veuillez choisir une musique</option>
+                  <option value="dropdown_music_list_LoL">League of legend main theme (48s)</option>
+                  <option value="dropdown_music_list_Abcdefu">abcdefu (87s)</option>
+                  <option value="dropdown_music_list_AllWeGot">All we got (52s)</option>
+                  <option value="dropdown_music_list_CrazyFrog">Crazy Frog (6s)</option>
+                  <option value="dropdown_music_list_GlimpseOfUs">Glipse of us (71s)</option>
+                  <option value="dropdown_music_list_CanonInD">Canon in D (33s)</option>
+                  <option value="dropdown_music_list_AnotherLove">Another love (27s)</option>
+                  <option value="dropdown_music_list_Believer">Believer (56s)</option>
+                  <option value="dropdown_music_list_DemonSlayer">Demon slayer Kamado (23s)</option>
+                  <option value="dropdown_music_list_FlowerDance">Flower dance (49s)</option>
+                  <option value="dropdown_music_list_GiornoTheme">Giorno theme (17s)</option>
+                  <option value="dropdown_music_list_IndianaJones">Indiana Jones (26s)</option>
+                  <option value="dropdown_music_list_KissTheRain">Kiss the rain (a revoir)</option>
+                  <option value="dropdown_music_list_LetHerGo">Let her go (35s)</option>
+                  <option value="dropdown_music_list_Lovely">Lovely (44s)</option>
+                  <option value="dropdown_music_list_Megalovania">Megalovania (9s)</option>
+                  <option value="dropdown_music_list_NeverGonnaGiveYouUp">Never gonna give you up (36s)</option>
+                  <option value="dropdown_music_list_Perfect">Perfect (79s)</option>
+                  <option value="dropdown_music_list_RiverFlowInYou">River flow in you (102s)</option>
+                  <option value="dropdown_music_list_Senorita">Senorita (52s)</option>
+                  <option value="dropdown_music_list_SomeoneYouLoved">Someone you loved (57s)</option>
+                  <option value="dropdown_music_list_SomethingJustLikeThis">Something just like this (51s)</option>
+                  <option value="dropdown_music_list_TakeOnMe">Take on me (54s)</option>
+                  <option value="dropdown_music_list_TLOZMainTheme">Zelda main theme (51s)</option>
+                  <option value="dropdown_music_list_ZeldaLullaby">Zelda lullaby (27s)</option>
+                  <option value="dropdown_music_list_Arcade">Arcade (63s perfectible)</option>
+                  <option value="dropdown_music_list_BarbieGirl">Barbie Girl (20s)</option>
+                  <option value="dropdown_music_list_CountingStars">Counting stars (71s bof)</option>
+                  <option value="dropdown_music_list_Happier">Happier (70s ok)</option>
+                  <option value="dropdown_music_list_Demons">Demons (2min30 full ver. seepdup)</option>
+                  <option value="dropdown_music_list_Birds">Birds (92s)</option>
+                  <option value="dropdown_music_list_FurElise">Lettre a Elise (30s)</option>
+                  <option value="dropdown_music_list_Numb">Numb (2min43s full ver.)</option>
+                  <option value="dropdown_music_list_FairyTail">Fairy tail (1min35)</option>
+                  <option value="dropdown_music_list_VivaldiSpring">Vivaldi Spring (54s)</option>
+                  <option value="dropdown_music_list_BalletGirl">Ballet girl (78s)</option>
+                  <option value="dropdown_music_list_GoldenHour">Golden hour (95s)</option>
+                  <option value="dropdown_music_list_CallMeMaybe">Call me maybe (32s)</option>
+                  <option value="dropdown_music_list_Test1">test1 left hand</option>
+                  <option value="dropdown_music_list_Test2">test2 right hand</option>
+
+                </select>
+                
+                <button id="play_button">play</button>
+
+
+                <button id="pause_button"><i class="fas fa-pause"></i></button>
+                <button id="redoButton"><i class="fas fa-redo"></i></button>
+                <button id="randomButton"><i class="fas fa-random"></i></button>
+                <div class="progress-bar">
+                  <div class="progress"></div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="1">Ecran OLED</td>
+              <td colspan="1" class="cellule-texte">
+                <div style="display: flex; justify-content: space-around; align-items: center;">
+                  <textarea id="myTextarea" name="myTextarea" rows="4" cols="19" maxlength="84" style="margin-right: 1px; resize: none;"></textarea>
+                  <button id="msg_button">Envoyer</button>
+                </div>
+              </td>
+            </tr>
+            
+          </table>
+
+        </section>
+        
+        <section class="right-rectangle">
+          <!-- Rectangle de droite (le graphique) -->
+          <div id="chartContainer"></div>
+        </section>
+      </section>
+      <section class="bottom-rectangle">
+      </section>
+    </main>
+    <footer>
+      <div>
+          Développé par <span class="credit">Dang Kévin</span> et <span class="credit">Dole Emilien</span>
+      </div>
+      <div>
+          Master1 SESI 2023-2024
+      </div>
+    </footer>
+
+    <script>
+      $(document).ready(function() {
+
+        var pauseButton = $('#pause_button');
+        var icon = pauseButton.find('i');
+        
+        // Afficher l'icône de pause par défaut
+        icon.removeClass('fa-pause');
+        icon.addClass('fa-play');
+
+          function fetchData() {
+              $.ajax({
+                  url: 'get_info.php',
+                  method: 'GET',
+                  success: function(response) {
+                      try {
+                          var data = JSON.parse(response);
+                          var sensorData = $('#dataList');
+                          sensorData.empty(); // Efface la liste précédente avant d'ajouter les nouvelles données
+                          var nameList = $('#nameList');
+                          nameList.empty(); // Efface la liste précédente avant d'ajouter les nouvelles données
+      
+                          var currentDate = new Date(); // Recupere la date actuelle
+                          var thresholdInMilliseconds = 0.5 * 60 * 1000; // Inactif depuis 30 seconde
+      
+                          data.forEach(function(item) {
+                              var dataListItem = $('<li>')
+                                  .append($('<span>').addClass('name-colonne').text(item.name))
+                                  .append($('<span>').addClass('luminosite-colonne').text(item.luminosity + '%'))
+                                  .append($('<span>').addClass('lastco-colonne').text(item.last_connection));
+                              sensorData.append(dataListItem);
+                              
+      
+                              var lastConnectionDate = new Date(item.last_connection);
+                              var differenceInMilliseconds = currentDate.getTime() - lastConnectionDate.getTime();
+                              // console.log("Current date" + currentDate);
+                              // console.log("Last connection"+item.last_connection);
+      
+      
+                              // Vérifier si la dernière connexion est dans le délai spécifié
+                              var statusText = (differenceInMilliseconds <= thresholdInMilliseconds) ? "Online" : "Offline";
+                              var newRow = $('<tr>')
+                                .attr('data-mac', item.mac_address)
+                                .attr('data-name', item.name)
+                                .attr('data-lastSeen', item.last_connection)
+                                .attr('data-motion', item.motion)
+                                .attr('data-button', item.button)
+                                .attr('data-luminosity', item.luminosity);
+      
+                              // Créer une cellule de tableau pour le nom
+                              // var nameCell = $('<td>').text(item.name);
+                              var nameCell = $('<td>').text(item.name).attr('data-name', item.name);
+                              
+                              
+
+                              
+                              // Créer une cellule de tableau pour le statut
+                              var statusCell = $('<td>').text(statusText);
+                              statusCell.addClass(statusText.toLowerCase()); // pour avoir une class selon le status
+      
+                              // Ajouter les cellules à la ligne de tableau
+                              newRow.append(nameCell, statusCell);
+      
+                              // Ajouter la nouvelle ligne à la table
+                              nameList.append(newRow);
+                          });
+                      } catch (error) {
+                          console.log("Erreur lors de l'analyse de la réponse JSON : " + error);
+                      }
+                  },
+                  error: function(xhr, status, error) {
+                      console.log("Erreur lors de la requête AJAX : " + error);
+                  }
+              });
+          }
+      
+
+          setInterval(fetchData, 500);
+        });
+    </script>
+    <script src="getmac.js"></script>
+    <script src="mqtt.js"></script>
+
+  <script>
+    const button = document.getElementById('pause_button');
+    const icon = button.querySelector('i');
+
+    button.addEventListener('click', function() {
+      if (icon.classList.contains('fa-play')) {
+        icon.classList.remove('fa-play');
+        icon.classList.add('fa-pause');
+      } else {
+        icon.classList.remove('fa-pause');
+        icon.classList.add('fa-play');
+      }
+    });
+  </script>
+
+  <script>
+    function updateProgressBar(progress, mac) {
+    var pauseButton = $('#pause_button');
+    var icon = pauseButton.find('i');
+    var progressBar = document.querySelector('.progress');
+    var selectedMacAddress = $('#selectedMac').text();
+
+    //console.log(selectedMac);
+    if(mac == selectedMac){
+
+    progressBar.style.width = progress + '%';
+
+        if(progress == 100){
+            icon.removeClass('fa-pause');
+            icon.addClass('fa-play');
+        }
+    }
+  }
+  </script>
+
+
+
+  <script>
+    var randomButton = document.getElementById("randomButton");
+    randomButton.disabled = true;
+    randomButton.style.color = "gray";
+    randomButton.style.backgroundColor = "lightgray";
+  </script>
+
+  </body>
+</html>

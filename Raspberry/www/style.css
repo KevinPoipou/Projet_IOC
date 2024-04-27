@@ -1,0 +1,177 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    height: 100px; /* Hauteur de la barre tout en haut */
+    background-color: #ccc; /* Couleur de fond */
+    display: flex;
+}
+
+.header-left,
+.header-right {
+  height: 100%; /* Même hauteur que la barre de navigation */
+  flex: 1; /* Diviser l'espace disponible en deux */
+}
+
+/* Vous pouvez ajouter du style spécifique à chaque partie de l'en-tête si nécessaire */
+.header-left {
+    flex: 0 0 200px; /* Taille fixe égale à la largeur de la barre de navigation */
+    background-color: lightblue; /* Couleur de fond pour la partie gauche */
+}
+
+.header-right {
+  background-color: lightgreen; /* Couleur de fond pour la partie droite */
+}
+
+nav {
+    width: 200px; /* Largeur de la barre tout à gauche */
+    height: calc(100% - 100px); /* Hauteur de la barre tout à gauche */
+    position: fixed; /* Position fixe */
+    left: 0; /* Alignement à gauche */
+    top: 100px; /* Décalage par rapport à la barre tout en haut */
+    background-color: #eee; /* Couleur de fond */
+    display: flex; /* Utilisation de flexbox */
+    flex-direction: column; /* Alignement vertical */
+}
+
+main {
+    margin-left: 100px; /* Décalage à droite pour laisser de l'espace pour la barre tout à gauche */
+    padding-top: 0px; /* Espace au-dessus du contenu */
+    display: flex;
+    flex-direction: column; /* Alignement vertical */
+    height: calc(100vh - 100px - 50px);
+}
+
+.top-container {
+    display: flex; /* Utilisation de flexbox */ 
+}
+
+
+
+.left-rectangle {
+    margin-left: 100px;
+    flex: 0 0 30%; /* Prend 30% de l'espace disponible */
+    background-color: rgb(216, 11, 154); /* Couleur de fond */
+    /* margin: 0 auto; */
+    display: flex; /* Utilisation de flexbox */
+    justify-content: center; /* Centre le contenu horizontalement */
+    align-items: center; /* Centre le contenu verticalement */
+}
+
+.left-rectangle table {
+    width: calc(100% - 100px); /* Assurez-vous que le tableau occupe toute la largeur de son conteneur */
+    border-collapse: collapse; /* Fusionne les bordures de cellules */
+}
+.left-rectangle th, .left-rectangle td {
+    border: 1px solid #000; /* Ajoute des bordures aux cellules */
+    padding: 8px; /* Ajoute un espacement à l'intérieur des cellules */
+    text-align: center; /* Centre le texte à l'intérieur des cellules */
+}
+
+.right-rectangle {
+    
+    flex: 0 0 calc(70% - 100px); /* Prend 60% de l'espace disponible */
+    height: 600px;
+    background-color: rgb(230, 230, 230); /* Couleur de fond */
+}
+
+.bottom-rectangle {
+    margin-left: 100px;
+    width: calc(100% - 100px);
+    height: calc(100% - 500px); /* Hauteur du rectangle en bas des deux rectangles */
+    background-color: #00f; /* Couleur de fond */
+}
+
+footer {
+    height: 50px; /* Hauteur du pied de page */
+    margin-left: 200px;
+    background-color: #ccc; /* Couleur de fond */
+    text-align: center;
+}
+.credit {
+    font-weight: bold;
+}
+
+footer div {
+    margin-bottom: 10px; /* Pour ajouter un espace entre les lignes */
+}
+  
+/* Style général du tableau */
+nav table {
+    width: 100%; /* Pour occuper la largeur totale de son conteneur */
+    border-collapse: collapse; /* Pour fusionner les bordures des cellules */
+  }
+  
+  /* Style de l'en-tête du tableau */
+  nav th {
+    background-color: #f2f2f2; /* Couleur de fond */
+    padding: 10px; /* Espacement interne */
+    text-align: left; /* Alignement du texte */
+    border-bottom: 2px solid #ccc; /* Bordure inférieure */
+  }
+  
+  /* Style des cellules du tableau */
+  nav td {
+    padding: 10px; /* Espacement interne */
+    border-bottom: 1px solid #ccc; /* Bordure inférieure */
+  }
+  
+  /* Style des lignes paires du tableau */
+  nav tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Couleur de fond */
+  }
+  .online {
+    color: green;
+  }
+  
+  /* Style pour le texte "Offline" en rouge */
+  .offline {
+    color: red;
+  }  
+
+table {
+    width: 100%; /* Définit la largeur totale du tableau */
+}
+
+th, td {
+    width: 50%; /* Définit la largeur de chaque cellule de manière égale */
+    height: 50px; /* Définit la hauteur de chaque cellule */
+}
+
+
+.cellule-texte textarea {
+    height: 100%; /* Ajuste la hauteur du textarea pour remplir la cellule */
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+.progress-bar {
+    margin-top: 5px;
+    width: 100%;
+    height: 4px;
+    background-color: #ddd;
+  }
+  
+  .progress {
+    height: 100%;
+    width: 0;
+    background-color: #1db954;
+    transition: width 0.3s ease-in-out;
+  }
+
+  button {
+    /* padding: 10px; */
+    border: none;
+    background-color: #eaeaea;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button.active {
+    background-color: #00ff00;
+    color: #fff;
+  }
