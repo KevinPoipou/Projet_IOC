@@ -18,7 +18,8 @@ Une fois le serveur d'écoute lancer, il faudra y récupéré l'adresse ip affic
 
 Ensuite il suffira d'ouvrir le logiciel Arduino IDE, d'y ouvrir le projet qui est situé dans le repertoire "Arduino", changez les informations comme décrit dans l'entete et téléversé le code sur l'ESP32.
 
+Vidéo démonstration du projet : https://www.youtube.com/watch?v=u35QerKMySA
 
 ![plot](./images/site_web.png?raw=true "site_web")
 
-https://www.youtube.com/watch?v=u35QerKMySA
+
