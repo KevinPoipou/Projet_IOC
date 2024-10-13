@@ -85,7 +85,7 @@ pip install mysql-connector
 ```
 
 
-Now it is ready to run the project. Don't forget to modify the following files
+Now it is ready to run the project. Don't forget to modify the following files :
 | File Path                                      | Description                                               |
 |------------------------------------------------|-----------------------------------------------------------|
 | Arduino/Projet_IOC.ino                         | Change the PINs, IP address, and listening TOPICs.      |
@@ -94,8 +94,12 @@ Now it is ready to run the project. Don't forget to modify the following files
 | Raspberry/server/www/get_history.php           | Change the credentials.                                   |
 | Raspberry/server/www/get_info.php              | Change the credentials.                                   |
 | Raspberry/server/www/mqtt.js                   | Update with the correct IP address.                      |
-   
 
+
+You will need the Arduino IDE with the following package to upload the code to your ESP32 :
+ ```bash
+https://dl.espressif.com/dl/package_esp32_index.json
+```
 
 <!--
 
