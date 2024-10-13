@@ -1,11 +1,12 @@
 ## Getting started 
 ### Raspberry
-First you need to install Raspberry Pi Os on your Raspberry pi 3
+First you need to install Raspberry Pi Os on your Raspberry pi 3 then update the environment :
 
+  ```bash
+  sudo apt-get update
+  sudo apt-get upgrade
 
-
-
-
+### test
 
 
 
