@@ -84,8 +84,8 @@ pip install paho-mqtt
 pip install mysql-connector
 ```
 
-Now is it ready to run the project.
-Don't forget to modify these files :
+
+Now it is ready to run the project. Don't forget to modify the following files
 | File Path                                      | Description                                               |
 |------------------------------------------------|-----------------------------------------------------------|
 | Arduino/Projet_IOC.ino                         | Change the PINs, IP address, and listening TOPICs.      |
