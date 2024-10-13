@@ -34,6 +34,8 @@ sudo apt install phpmyadmin
  And choose apache2 for phpmyadmin configuration then answer no to "Configure database for phpmyadmin with dbconfig-common"
 
 5. Again MariaDB/mysql configuration :
+
+   Dont forget to replace username and password don't remove the ' characters
 ```bash
 sudo mysql -u root -p
 GRANT ALL PRIVILEGES ON *.* TO ’username’@’localhost’ IDENTIFIED BY ’password’ WITH GRANT OPTION;
