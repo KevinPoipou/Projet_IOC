@@ -1,3 +1,16 @@
+## Getting started 
+### Raspberry
+First you need to install Raspberry Pi Os on your Raspberry pi 3
+
+
+
+
+
+
+
+
+
+
 Projet réalisé durant le second semestre du master 1 SESI.
 Il s'agit de realiser une communication sans fil entre plusieurs ESP32 ainsi qu'une raspberry pi3 et d'y afficher les informations sur un site web.
 Il faut aussi réussir a faire communiquer le site web avec les ESP32.
