@@ -101,6 +101,9 @@ You will need the Arduino IDE with the following package to upload the code to y
 https://dl.espressif.com/dl/package_esp32_index.json
 ```
 
+And all the librairy used with Arduino IDE are located at : ./Arduino/library 
+To install them just go to Sketch -> Include Librairy -> ADD ZIP Librairy on your arduino app
+
 <!--
 
 Projet réalisé durant le second semestre du master 1 SESI.
