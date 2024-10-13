@@ -1,5 +1,5 @@
 ## Getting started 
-### Raspberry
+### Setting up the Raspberry Pi
 1. First you need to install Raspberry Pi Os on your Raspberry pi 3 then update the environment :
 
 ```bash
@@ -103,6 +103,78 @@ https://dl.espressif.com/dl/package_esp32_index.json
 
 And all the librairy used with Arduino IDE are located at : ./Arduino/library 
 To install them just go to Sketch -> Include Librairy -> ADD ZIP Librairy on your arduino app
+
+### Setting up the database :
+
+You need to created the database by running theses following line on : http ://localhost/phpmyadmin/index.php
+```bash
+CREATE DATABASE DB_ESP32;
+```
+```bash
+CREATE TABLE ‘ESP32‘ (
+‘id‘ int(11) NOT NULL AUTO_INCREMENT,
+‘name‘ varchar(24) NOT NULL,
+‘mac_address‘ varchar(17) NOT NULL,
+‘data‘ text DEFAULT NULL,
+‘last_connection‘ text DEFAULT NULL,
+PRIMARY KEY (‘id‘),
+UNIQUE KEY ‘mac_address‘ (‘mac_address‘)
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+```
+```bash
+CREATE TABLE ‘ESP32_SensorData‘ (
+‘id‘ int(11) NOT NULL AUTO_INCREMENT,
+‘data‘ text NOT NULL,
+‘timestamp‘ timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE
+current_timestamp(),
+‘fk_mac‘ int(11) NOT NULL,
+PRIMARY KEY (‘id‘),
+KEY ‘fk_mac_constraint‘ (‘fk_mac‘),
+CONSTRAINT ‘fk_mac_constraint‘ FOREIGN KEY (‘fk_mac‘) REFERENCES ‘ESP32‘ (‘id‘)
+) ENGINE=InnoDB AUTO_INCREMENT=119223 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+```
+
+### Redirecting apache2 to our www directory :
+```bash
+sudo nano /etc/apache2/apache2.conf
+```
+```bash
+Find the following lines :
+
+<Directory /var/www/>
+Options Indexes FollowSymLinks
+AllowOverride None
+Require all granted
+Allow from all
+</Directory>
+
+Replace by
+
+<Directory /home/votre_nom_d’utilisateur/Project_location/Projet_IOC/server/www/>
+Options Indexes FollowSymLinks
+AllowOverride None
+Require all granted
+Allow from all
+</Directory>
+```
+Then :
+```bash
+sudo nano /etc/apache2/sites-available/000-default.conf
+```
+```bash
+Find the following lines :
+
+DocumentRoot /var/www/html
+
+Replace by
+
+DocumentRoot /home/votre_nom_d/Desktop/Projet_IOC/server/www/
+```
+Then restart apache2
+```bash
+sudo service apache2 restart
+```
+
 
 <!--
 
