@@ -1,20 +1,92 @@
 ## Getting started 
 ### Raspberry
-First you need to install Raspberry Pi Os on your Raspberry pi 3 then update the environment :
+1. First you need to install Raspberry Pi Os on your Raspberry pi 3 then update the environment :
 
 ```bash
 sudo apt-get update
 sudo apt-get upgrade
 ```
-
+2. Python installation :
 ```bash
 python --version
 sudo apt install python3
 ```
-
+3. MariaDB installation and configuration :
 ```bash
 sudo apt-get install mariadb-server
+sudo mysql\_secure\_installation
 ```
+Enter a password then for the following question :
+```bash
+Switch to unix_socket authentification? => n
+Change the root password? => n
+Remove anonymous users? => n
+Disallow root login remotely? => n
+Remove test database and access to it? => n
+Reload privilege tables now? => n
+```
+4. Apache2, php installation :
+```bash
+sudo apt install apache2
+sudo apt install php
+sudo apt install phpmyadmin
+```
+And choose apache2 for phpmyadmin configuration then answer no to "Configure database for phpmyadmin with dbconfig-common"
+
+5. Again MariaDB/mysql configuration :
+```bash
+sudo mysql -u root -p
+GRANT ALL PRIVILEGES ON *.* TO ’username’@’localhost’ IDENTIFIED BY ’password’ WITH GRANT OPTION;
+quit
+```
+6. Apache2 configuration :
+```bash
+sudo nano /etc/apache2/apache2.conf
+```
+Then add these line :
+```bash
+Include /etc/phpmyadmin/apache.conf
+```
+Save and close the editor then restart apache2 :
+```bash
+sudo service apache2 restart
+```
+After 
+```bash
+sudo ln -s /etc/phpmyadmin/ /var/www/html/phpmyadmin
+```
+
+Now we can reach phpmyadmin on the following link : http ://localhost/phpmyadmin
+If it doesn't work you need to reconfigure phpmyadmin
+
+6. MQTT installation and configuration
+ ```bash
+sudo apt install mosquitto
+sudo nano /etc/mosquitto/mosquitto.conf
+```
+Replace by :
+ ```bash
+allow_anonymous true
+pid_file /run/mosquitto/mosquitto.pid
+persistence true
+persistence_location /var/lib/mosquitto/
+listener 1883
+listener 9001
+protocol websockets
+log_dest file /var/log/mosquitto/mosquitto.log
+include_dir /etc/mosquitto/conf.d
+```
+Save and exit then run these command :
+ ```bash
+pip install paho-mqtt
+pip install mysql-connector
+```
+
+
+   
+
+
+
 
 Projet réalisé durant le second semestre du master 1 SESI.
 Il s'agit de realiser une communication sans fil entre plusieurs ESP32 ainsi qu'une raspberry pi3 et d'y afficher les informations sur un site web.
