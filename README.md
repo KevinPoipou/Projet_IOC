@@ -3,12 +3,18 @@
 First you need to install Raspberry Pi Os on your Raspberry pi 3 then update the environment :
 
 ```bash
-  sudo apt-get update
-  sudo apt-get upgrade
+sudo apt-get update
+sudo apt-get upgrade
 ```
 
+```bash
+python --version
+sudo apt install python3
+```
 
-
+```bash
+sudo apt-get install mariadb-server
+```
 
 Projet réalisé durant le second semestre du master 1 SESI.
 Il s'agit de realiser une communication sans fil entre plusieurs ESP32 ainsi qu'une raspberry pi3 et d'y afficher les informations sur un site web.
