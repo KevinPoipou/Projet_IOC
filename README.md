@@ -175,6 +175,10 @@ Then restart apache2
 sudo service apache2 restart
 ```
 
+Now if everything was done correctly you may run the website and communicate with your ESP32.
+![plot](./images/site_web.png?raw=true "site_web")
+
+Short video in french with a demonstration of the project : https://www.youtube.com/watch?v=u35QerKMySA
 
 <!--
 
