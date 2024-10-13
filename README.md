@@ -84,11 +84,20 @@ pip install paho-mqtt
 pip install mysql-connector
 ```
 
-
+Now is it ready to run the project.
+Don't forget to modify these files :
+| File Path                                      | Description                                               |
+|------------------------------------------------|-----------------------------------------------------------|
+| Arduino/Projet_IOC.ino                         | Change the PINs, IP address, and listening TOPICs.      |
+| Arduino/song.h                                 | Change the PINs if needed.                               |
+| Raspberry/server/start_subscriber.py           | Update the listening channel and db_config.              |
+| Raspberry/server/www/get_history.php           | Change the credentials.                                   |
+| Raspberry/server/www/get_info.php              | Change the credentials.                                   |
+| Raspberry/server/www/mqtt.js                   | Update with the correct IP address.                      |
    
 
 
-
+<!--
 
 Projet réalisé durant le second semestre du master 1 SESI.
 Il s'agit de realiser une communication sans fil entre plusieurs ESP32 ainsi qu'une raspberry pi3 et d'y afficher les informations sur un site web.
@@ -113,5 +122,5 @@ Ensuite il suffira d'ouvrir le logiciel Arduino IDE, d'y ouvrir le projet qui es
 Vidéo démonstration du projet : https://www.youtube.com/watch?v=u35QerKMySA
 
 ![plot](./images/site_web.png?raw=true "site_web")
-
+-->
 
