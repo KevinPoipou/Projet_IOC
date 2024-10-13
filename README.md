@@ -16,7 +16,7 @@ sudo apt install python3
 sudo apt-get install mariadb-server
 sudo mysql\_secure\_installation
 ```
-Enter a password then for the following question :
+ Enter a password then for the following question :
 ```bash
 Switch to unix_socket authentification? => n
 Change the root password? => n
@@ -31,7 +31,7 @@ sudo apt install apache2
 sudo apt install php
 sudo apt install phpmyadmin
 ```
-And choose apache2 for phpmyadmin configuration then answer no to "Configure database for phpmyadmin with dbconfig-common"
+ And choose apache2 for phpmyadmin configuration then answer no to "Configure database for phpmyadmin with dbconfig-common"
 
 5. Again MariaDB/mysql configuration :
 ```bash
@@ -47,7 +47,7 @@ Then add these line :
 ```bash
 Include /etc/phpmyadmin/apache.conf
 ```
-Save and close the editor then restart apache2 :
+ Save and close the editor then restart apache2 :
 ```bash
 sudo service apache2 restart
 ```
@@ -56,15 +56,15 @@ After
 sudo ln -s /etc/phpmyadmin/ /var/www/html/phpmyadmin
 ```
 
-Now we can reach phpmyadmin on the following link : http ://localhost/phpmyadmin
-If it doesn't work you need to reconfigure phpmyadmin
+ Now we can reach phpmyadmin on the following link : http ://localhost/phpmyadmin
+ If it doesn't work you need to reconfigure phpmyadmin
 
 6. MQTT installation and configuration
  ```bash
 sudo apt install mosquitto
 sudo nano /etc/mosquitto/mosquitto.conf
 ```
-Replace by :
+ Replace by :
  ```bash
 allow_anonymous true
 pid_file /run/mosquitto/mosquitto.pid
@@ -76,7 +76,7 @@ protocol websockets
 log_dest file /var/log/mosquitto/mosquitto.log
 include_dir /etc/mosquitto/conf.d
 ```
-Save and exit then run these command :
+ Save and exit then run these command :
  ```bash
 pip install paho-mqtt
 pip install mysql-connector
